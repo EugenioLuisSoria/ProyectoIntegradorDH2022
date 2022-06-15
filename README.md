@@ -1,3 +1,10 @@
+Este es el trabajo final, presentado. 
+Todo el proyecto fue realizado en el repositorio de Facundo Rodriguez (https://github.com/RodriguezFacundoG/grupo_5_buyTech)
+durante el curso de Full Stack que realicé en 2022.
+
+
+
+
 Proyecto Integrador e-commerce
 Como parte del proyecto integrador se solicita el desarrollo de una plataforma de e-commerce. Se crea una plataforma bajo el nombre de BUYTECH a través de la cuál se comercializarán artículos de tecnología móviles como:
 o	Notebooks
