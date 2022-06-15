@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuyTech - Shop Cart</title>
+
+    <!-- CSS -->
+    <link href="/css/styleHeader.css" rel="stylesheet" type="text/CSS" />
+    <link href="/css/styleProductCart.css" rel="stylesheet" type="text/CSS" />
+    <link href="/css/styleFooter.css" rel="stylesheet" type="text/CSS" />
+    <!-- ICONOS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Linkear Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <div class="cart-detail">
+        <div class="cart-order-summary">
+          <ul class="cart-order-totals">
+            <li class="cart-order-totals-item">
+              Subtotal
+              <span class="cart-order-totals-value">$<%= total %></span>
+            </li>
+            <!-- <li class="cart-order-totals-item">
+                  Discount
+                  <span class="cart-order-totals-value">$0</span>
+                </li> -->
+            <li class="cart-order-totals-item">
+              Shipping <% if (total ==0 ){ %>
+              <span class="cart-order-totals-value">$0</span>
+              <% } %> <% if (total !=0 ){ %>
+              <span class="cart-order-totals-value">$700</span>
+              <% } %>
+            </li>
+            <li class="cart-order-totals-item_strong">
+              Total Price <% if (total ==0 ){ %>
+              <span class="cart-order-totals-value">$<%=total%></span>
+              <% } %> <% if (total !=0 ){ %>
+              <span class="cart-order-totals-value">$<%=total+shipping%></span>
+              <% } %>
+            </li>
+          </ul>
+
+          <!-- BOTONES CHECK-OUT Y CONTINUE-SHOPPING-->
+          <div class="checkout-continue-buttons">
+            <% if (total !=0) { %>
+            <div class="cart-button">
+              <a href="/user/checkout">
+                <button class="cart-button-checkout">Check-out</button>
+              </a>
+            </div>
+            <% } %>
+            <div class="cart-button">
+              <a href="/">
+                <% if (elements[0]==null){ %>
+                <button class="cart-button-continue">Start Shopping</button>
+                <% }; %> <% if (elements[0]!=null){ %>
+                <button class="cart-button-continue">Continue Shopping</button>
+                <% } %>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- LISTADO DE ARTICULOS-->
+        <div class="cart-order-items">
+          <!-- ITEM 1 -->
+          <% if (elements[0]==null) {%>
+              <div>
+                <h1>No tienes elementos en el carrito</h1>
+              </div>
+          <% } %> 
+          <% for( element of elements ) { %>
+
+          <div class="cart-item">
+            <div class="cart-image">
+              <div class="cart-item-image">
+                <img
+                  class="img-article"
+                  src="/images/productos/<%=element.product.picture%> "
+                  alt="aricleX.jpg"
+                />
+              </div>
+            </div>
+
+            <div class="cart-attributes">
+              <h2 class="cart-item-title"><%= element.product.name %></h2>
+              <ul class="cart-item-attributes">
+                <li class="cart-item-attributes_attribute">
+                  <span class="item-attribute_label">Memory</span>
+                </li>
+                <li class="cart-item-attributes_attribute">
+                  <span class="item-attribute_label">Color</span>
+                </li>
+                <li class="cart-item-attributes_attribute">
+                  <span class="item-attribute_label">Size</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="cart-cost">
+              <div class="cart-item-price">
+                <p class="cart-item-price_line">
+                  <span class="item-price">$<%= element.product.price * (1 - element.product.discount/100) %> </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="cart-actions">
+              <form action="/user/<%= element.product.id %>?_method=DELETE" method="POST">
+                <div class="cart-item-actions_remove">
+                  <button class="submit">Remove</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="cart-message">
+              <div class="cart-item-message">
+                <p class="cart-item-message_line">
+                  <span class="item-message">Possible error</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

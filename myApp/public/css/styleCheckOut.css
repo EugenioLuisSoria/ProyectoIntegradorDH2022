@@ -1,0 +1,12 @@
+main {
+  padding-top: 9vh;
+  padding-bottom: 61vh;
+  padding-left: 10vw;
+}
+@media (min-width: 769px) {
+  main {
+    padding-top: 9vh;
+    padding-bottom: 61vh;
+    padding-left: 38vw;
+  }
+}

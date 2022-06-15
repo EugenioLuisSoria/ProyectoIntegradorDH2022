@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyTech - Product Details</title>
+    <!-- CSS donde se llama a main.css -->
+    <link rel="stylesheet" href="/BuyTech/public/css/styleProductDetails.css">
+    <!-- CSS -->
+    <link href="/css/styleHeader.css" rel="stylesheet" type="text/CSS">
+    <link href="/css/styleFooter.css" rel="stylesheet" type="text/CSS">
+    <link href="/css/styleProductDetails.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+   <!-- HEADER -->
+   <%- include('./partials/header.ejs') %>
+
+    <main>
+        <div class="product-container">
+            <div class="product-image">
+                <img class="image" src="/images/productos/<%= element.picture %>" alt="<%= element.picture %>">
+            </div>
+
+            <div class="product-info-name">
+                <h3 class="product-name"><%= element.name %></h3>
+            </div>
+            <div class="product-info-description">
+                <p class="product-description"><%= element.description %></p>
+            </div>
+            <div class="product-info-price">
+                <p class="product-price">$<%= element.price * (1 - element.discount/100)  %></p>               
+            </div>
+            <div class="product-properties">
+                <ul class="list-properties">
+                    <li><i class="far fa-check-circle"></i><p>Color: <%= element.color %></p></li>
+                    <li><i class="far fa-check-circle"></i><p>Weight: <%= element.weight %></p></li>
+                    <li><i class="far fa-check-circle"></i><p>Size: <%= element.size %></p></li>
+                </ul>
+            </div>
+            <div class="product-quantity">
+                <div class="quantity-text">
+                    <p></p>
+                </div>
+               <!--  <div class="quantity-number">
+                    <select name="selected-quantity" id="selected-quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div> -->
+            </div>
+            
+
+            <div class="add-to-cart">
+                <div class="button-container">    
+                    <form action="/user/<%= element.id %>" method="POST">
+                        <button type="submit">Add to cart</button>
+                    </form>    
+                </div>
+            </div>
+            <% if (locals.userLogged && locals.userLogged.user_category.type == true) { %> <!--Si es admin, le deja ver las opciones de Edit & Delete-->
+            
+                <div class="buttons-administrator">
+                    <div class="edit">
+                        <div class="button-container">    
+                            <form action="/products/<%= element.id %>/edit" method="GET">
+                                <button type="submit">Edit</button>
+                            </form>    
+                        </div>
+                    </div>
+                    <div class="delete">
+                        <div class="button-container">    
+                            <form action="/products/<%= element.id %>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>    
+                        </div>
+                    </div>
+                </div>
+
+            <% } %>           
+        </div>
+    </main>
+
+   <!-- FOOTER -->
+   <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>

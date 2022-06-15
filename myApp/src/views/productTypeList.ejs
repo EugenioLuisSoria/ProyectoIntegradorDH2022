@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuyTech - d Type List</title>
+
+    <!-- Linkear Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Iconos -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styleProductTypeList.css" />
+    <link rel="stylesheet" href="/css/styleHeader.css" />
+    <link href="/css/styleFooter.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+      <div class="product_route">
+        <ol class="product_route_list">
+          <li class="product_route_list_item">
+            <a href="/">
+              <span class="product_route_list_item_name">BuyTech</span>
+            </a>
+          </li>
+          <li class="product_route_list_icon">
+            <span class="product_route_list_icon_type">></span>
+          </li>
+          <li class="product_route_list_item">
+            <a href="/">
+              <span class="product_route_list_item_name">
+                  <%= category.charAt(0).toUpperCase() + category.slice(1) %></span >
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <div class="product_section">
+        <% for (product of products) { %>
+        <div class="product">
+          <div class="product_img">
+            <img
+              src="/images/productos/<%= product.picture %>"
+              alt=""
+              class="product__img"
+            />
+          </div>
+          <div class="product_list_content_info">
+            <div class="product_section_name">
+              <span class="product__name"><%= product.name %></span>
+            </div>
+            <% if (product.discount > 0 ) { %>
+            <div class="product_section_discount">
+              <span class="product_old_price">$<%= product.price %></span>
+              <span class="product_discount">-<%= product.discount %>%</span>
+            </div>
+            <% } %>
+            <div class="product_section_price">
+              <span class="product_price">$<%= product.price * (1 - product.discount/100) %></span>
+            </div>
+            <div class="buttons">
+              <a href="/products/<%= product.id %>">
+                <div class="button-container">
+                  <button class="button-product" type="submit">
+                    <p>Details</p>
+                  </button>
+                </div>
+              </a>
+              <div class="button-container">
+                <form action="/user/<%= product.id %>" method="POST">
+                  <button class="button-product" type="submit">
+                    Add to cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>

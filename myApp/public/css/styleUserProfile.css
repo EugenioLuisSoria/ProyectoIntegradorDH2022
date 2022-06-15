@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+}
+
+html {
+  font-size: 10px;
+  text-size-adjust: 100%;
+}
+
+main {
+  width: 100vw;
+  padding-bottom: 122px;
+  padding-top: 60px;
+  background-color: rgb(241, 241, 241);
+}
+
+/* WELCOME */
+.profile-container {
+  background-color: white;
+  margin: 10px;
+  padding: 20px;
+}
+
+.profile-welcome {
+  display: inline-flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.profile-image-user {
+  width: 50px;
+  height: 50px;
+}
+
+.profile-welcome-user {
+  color: black;
+  font-size: 2rem;
+}
+
+.form-box {
+  padding-top: 10px;
+}
+
+.form-title {
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.form-data {
+  color: rgb(74, 74, 74);
+  font-size: 1.4rem;
+}
+
+.form-button {
+  margin-top: 30px;
+}
+
+.button-edit {
+  text-align: center;
+  background-color: #4b5666;
+  border: 1px solid #4b5666;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 0.24rem;
+  line-height: normal;
+  text-transform: uppercase;
+  padding: 10px;
+  width: 10rem;
+}
+.button-logout {
+  text-align: center;
+  background-color: rgb(155, 105, 105);
+  border: 1px solid #4b5666;
+  color: rgb(238, 234, 234);
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  line-height: normal;
+  text-transform: uppercase;
+  padding: 8px;
+  width: 9rem;
+}
+
+@media (min-width: 375px) {
+  .profile-container {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

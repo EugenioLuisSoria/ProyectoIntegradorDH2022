@@ -1,0 +1,161 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuyTech</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styleIndex.css" />
+    <link rel="stylesheet" href="/css/styleHeader.css" />
+    <link rel="stylesheet" href="/css/styleFooter.css" type="text/css" />
+    <!-- Linkear Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+      <!-- <a href="http://localhost:3005">to DASHBOARD</a> -->
+
+      <div class="slider">
+        <div class="slider__category">
+          <a href="/products/smartphones/categories">
+            <i class="fas fa-mobile-alt"></i>
+          </a>
+          <p>Smartphones</p>
+        </div>
+
+        <div class="slider__category">
+          <a href="/products/tablets/categories">
+            <i class="fas fa-tablet-alt"></i>
+          </a>
+          <p>Tablets</p>
+        </div>
+
+        <div class="slider__category">
+          <a href="/products/laptops/categories">
+            <i class="fas fa-laptop"></i>
+          </a>
+          <p>Laptops</p>
+        </div>
+
+        <div class="slider__category">
+          <a href="/products/accesories/categories">
+            <i class="fas fa-mouse"></i>
+          </a>
+          <p>Accesories</p>
+        </div>
+      </div>
+
+      <div class="advertise_section">
+        <div class="advertise_section_image">
+          <a href="/products/9">
+            <img
+              src="/images/banner.png"
+              alt="release"
+              class="advertise_image"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="section_title">
+          <h3 class="section_title_info">Trending Now</h3>
+        </div>
+
+        <div class="section_products">
+          <div class="top_sale_section_products">
+            <div class="top_sale_section_item_first">
+              <% products.forEach(product => {%> 
+                <% if (product.type == 1) %>
+              <div class="product">
+                <a href="/products/<%= product.id %>">
+                  <img
+                    src="/images/productos/<%= product.picture %>"
+                    alt=""
+                    class="product__img"
+                  />
+                  <div class="product_section_name">
+                    <span class="product__name"><%= product.name %></span>
+                  </div>                 
+                  
+                  <% if (product.discount == 0) { %>               
+                    
+                    <div class="product_section_price">
+                      <span class="product_price">$<%= product.price %></span>
+                    </div>
+
+                  <% } else { %> 
+
+                    <div class="product_section_discount">
+                      <span class="product_old_price">$<%= product.price %></span>
+                      <span class="product_discount">- <%= product.discount %> %</span>
+                    </div>
+                    <div class="product_section_price">
+                      <span class="product_price">$<%= product.price * (1 - product.discount/100) %></span>
+                    </div>
+                    
+                  <% } %> 
+                  
+                </a>
+              </div>
+              <% }) %>
+            </div>
+
+            <div class="top_sale_section_item_rest">
+              <% products.forEach(product => {%>
+              <div class="product">
+                <a href="/products/<%= product.id %>">
+                  <img
+                    src="/images/productos/<%=product.picture%>"
+                    alt=""
+                    class="product__img"/>
+                  <div class="product_section_name">
+                    <span class="product__name"><%= product.name %></span>
+                  </div>
+                  <% if (product.discount == 0) { %>               
+                    
+                    <div class="product_section_price">
+                      <span class="product_price">$<%= product.price %></span>
+                    </div>
+
+                  <% } else { %> 
+
+                    <div class="product_section_discount">
+                      <span class="product_old_price">$<%= product.price %></span>
+                      <span class="product_discount">- <%= product.discount %> %</span>
+                    </div>
+                    <div class="product_section_price">
+                      <span class="product_price">$<%= product.price * (1 - product.discount/100) %></span>
+                    </div>
+                    
+                  <% } %> 
+                </a>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REACT COMPONENTE -->
+      <div id="appReact"></div>
+    </main>
+    <!-- FOOTER  -->
+    <%- include('./partials/footer.ejs') %> 
+    <!-- scripts REACT para Dash -->
+    <%- include('./partials/react_scripts.ejs') %>
+  </body>
+</html>

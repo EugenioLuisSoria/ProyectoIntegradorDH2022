@@ -1,0 +1,46 @@
+<header class="header">
+<div class="top">
+    <!-- Icon menu -->
+    <div class="icon-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <a class="logo" href="/">
+            <img src="/images/LogoBuyTech.png" alt="LOGO" class="header__img">
+        </a>
+    </div>
+    
+
+    <!-- Search bar -->
+    <form action="/products/search" method="GET" class="search-bar">
+        <input type="search" name="keywords" placeholder="Search products">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+
+    <!-- Nav de user y cart -->
+    <div class="icons">
+        <div class="icon-user">
+            <% if(locals.isLogged == false){ %>
+                <a href="/user/login">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-personal__text">User</span>
+                    </a>
+                <% } else { %>
+                    <a href="/user/<%= locals.userLogged.id %>/profile">
+                        <i class="fas fa-user"></i>
+                        <span class="nav-personal__text"><%= locals.userLogged.first_name %></span>
+                    </a>
+                <% } %>
+        </div>
+
+        <div class="icon-cart">
+            <a href="/user/cart">  
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </div> 
+</div>
+    
+</header>

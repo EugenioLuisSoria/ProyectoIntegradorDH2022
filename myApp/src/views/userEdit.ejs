@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- Linkear el CSS -->
+    <link href="/css/user.css" rel="stylesheet" type="text/css">
+    <link href="/css/styleFooter.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/styleHeader.css">
+    <!-- Linkear Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Linkear íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<body>
+    <!-- HEADER -->
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+        <div class="register-container">
+            <div class="register-title">
+                <h3 class="register">Hola <%= user.first_name %></h3>
+            </div>
+            <form action="/user/<%= user.id %>?_method=PUT" method="POST" class="form-complete" enctype="multipart/form-data">     
+                    <div class="form-box">
+                        <label for="first_name"></label>
+                        <input type="text" placeholder="First Name" id="first_name" name="first_name" value="<%= user.first_name %>">
+                    </div>
+                    <p>
+                        <% if (locals.errors && errors.first_name){  %> 
+                            <%= locals.errors.first_name.msg %>                         
+                        <%}%>
+                    </p>
+
+                    <div class="form-box">
+                        <label for="last_name"></label>
+                        <input type="text" placeholder="Last Name" id="last_name" name="last_name" value="<%= user.last_name %>">
+                    </div>
+                    <p>
+                        <% if (locals.errors && errors.last_name){  %> 
+                            <%= locals.errors.last_name.msg %>                         
+                        <%}%>
+                    </p>
+
+                    <div class="form-box">
+                        <label for="password"></label>
+                        <input type="password" placeholder="Password" id="password" name="password">
+                    </div>
+                    <% if (locals.errors && errors.password){  %> 
+                        <p> <%= locals.errors.password.msg %> </p>
+                        <br>
+                        <br>
+                    <%}%>
+                    
+                    <div class="form-box">
+                        <label for="password_verification"></label>
+                        <input type="password" placeholder="Repeat Password" id="password_verification" name="password_verification">
+                    </div>
+                    <% if (locals.errors && errors.password_verification){  %> 
+                        <p> <%= locals.errors.password_verification.msg %> </p>
+                        <br>
+                        <br>
+                    <%}%>
+                    
+                    <div class="form-box">
+                        <label for="avatar"></label>
+                        <input type="file" accept=".jpg" placeholder="Foto Jpg" id="avatar" name="avatar">
+                    </div>
+                    
+                    <div class="form-button">
+                        <button type="submit">Submit</button>
+                    </div>
+            </form>
+            
+            <div class="no-user">
+                <a href="/">Back</a>
+            </div>
+        </div>
+    </main>
+
+ <!-- FOOTER -->
+ <%- include('./partials/footer.ejs') %>
+    
+</body>
+</html>

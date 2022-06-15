@@ -1,0 +1,19 @@
+edicion de usuario (update)
+
+
+
+css grid/flex del index
+
+
+searchbar
+
+
+
+
+
+
+productos mostrados en index que sean de distintos  tipos  (buscar randomness)
+view del search
+logout color
+"sin productos en carrito" --- "sin productos" dinamico
+sacar quantity  en productdeatail

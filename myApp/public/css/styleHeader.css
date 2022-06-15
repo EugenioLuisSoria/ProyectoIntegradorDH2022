@@ -1,0 +1,140 @@
+.header {
+  font-family: 'Barlow', sans-serif; 
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-color: #0158aa;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;        
+}
+
+.top{
+  display: grid;
+  grid-template-columns: 50px 300px 1fr;
+  height: 60px;
+  padding: 0px 15px;
+}
+
+
+/* ICON MENU */
+.icon-menu {
+  display: flex;
+  align-items: center;
+}
+
+.icon-menu i {    
+  color: white;
+  font-size: 2rem;
+}
+
+
+/* LOGO */
+.logo-container {
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+  height: 60px;
+}
+
+.logo-container .logo img{
+  max-height: 100%;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  display: none;
+}
+
+/* USER ICONS */
+.nav-personal__text {
+  display: none;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.icon-user{
+  text-align: center;
+  padding: 0 7px;
+}
+
+.icon-cart{
+  text-align: center;
+  padding: 0 7px;
+}
+
+.icons div i {
+  font-size: 2rem;
+  margin: 0.8rem;
+  color: white;
+}
+
+
+@media (min-width: 769px) {
+
+  .top{
+    display: grid;
+    grid-template-columns: 250px 1fr 20%;
+  }
+
+  .icon-menu {
+      display: none;
+  }
+
+  .search-bar {
+    display: flex;
+    flex-grow: 0.9;
+    margin: 0 auto;
+    justify-content: flex-end;   
+    align-items: center; 
+    background-color: transparent;
+    position: relative;
+    width: 100%;
+  }
+
+  .search-bar input {
+    display:flex;
+    width: 100%; 
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    border: 1px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    background-color: white;
+  }
+  
+  .search-bar button {
+    border: none;
+    background-color: white;
+    position: absolute;
+    right: 1.5rem;
+  }
+
+  i.fa-search{
+    cursor: pointer;
+  }
+  
+  .icon-user{
+    width: 50%;
+    text-align: center;
+    padding: 0 7px;
+  }
+  
+  .icon-cart{
+    width: 50%;
+    text-align: center;
+    padding: 0 7px;
+  }
+
+  .nav-personal__text {
+    display: inline;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+}

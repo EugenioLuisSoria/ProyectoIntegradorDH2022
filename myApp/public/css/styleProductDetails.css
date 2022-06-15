@@ -1,0 +1,224 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+}
+
+html{
+    font-size: 10px;
+    text-size-adjust: 100%;
+}
+
+main {
+    width: 100vw;
+    padding-bottom: 20px;
+    padding-top: 60px;
+    background-color: #EDEEF0;
+  }
+
+.product-container{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+    "product-info-name"
+    "product-info-price"
+    "product-image";
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1561px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 5px rgb(100, 100, 100);
+    width: 90vw;
+}
+
+.product-info-name{
+    grid-area: product-info-name;
+}
+.product-name{
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.product-info-price{
+    grid-area: product-info-price;
+}
+.product-price{
+    color: #0158aa;
+    font-size: 1.8rem;
+}
+
+.product-image{
+    grid-area: product-image;
+    width: 100%;
+    display: block;
+    margin:auto;
+    position: relative;
+    padding-top: 100%;
+}
+.product-image .image{
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.product-image-rows{
+    display: none;
+    height: 100%;
+    grid-template-rows: repeat(4, 1fr);
+    grid-row-gap: 1%;
+    align-items: center;
+}
+
+.product-image-rows img{
+    height: 100px;
+    width: 100px;
+}
+
+.product-description{
+    display: none;
+    font-size: 1.2rem;
+}
+
+.list-properties{
+    margin: 10px 0;
+    list-style-type: none;
+}
+
+.list-properties li{
+    position: relative;
+    margin-left: 24px;
+    margin-bottom: 2px;
+    min-height: 18px;
+    font-size: 1.2rem;
+}
+
+.list-properties li i{
+    color: #0158aa;
+    position: absolute;
+    left: -25px;
+    top: 2px;
+}
+
+.button-container button{
+    font-family: 'Barlow', sans-serif;
+    background-color: #4b5666;
+    border: 1px solid #4b5666;
+    color: #fff;
+    font-size: 1.3rem;
+    letter-spacing: .24rem;
+    line-height: normal;
+    min-height: 45px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.product-quantity select{
+    background-color: #fdfdf9;
+    border: 1px solid #939395;
+    border-radius: 5px;
+    color: #5c5c5f;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.6rem;
+    height: 45px;
+    letter-spacing: .06rem;
+    padding: 0 10px;
+    width: 100%;
+}
+
+.product-quantity p{
+    color: #5c5c5f;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.6rem;
+    height: 45px;
+    letter-spacing: .06rem;
+    padding: 0 10px;
+    width: 100%;
+    margin-right: 6px;
+}
+
+.product-quantity{
+    display: flex;
+    vertical-align: middle;
+    margin-top: 15px;
+    margin-bottom: 25px;;
+}
+
+.buttons-administrator{
+    margin-top: 10px;
+}
+
+.edit .button-container button{
+    background-color: #0158aa;
+    border: 1px solid #0158aa;
+}
+
+.delete .button-container button{
+    background-color: #AE3017;
+    border: 1px solid #AE3017;
+    margin-top: 10px;
+}
+
+/*Media queries for Desktop*/
+@media (min-width: 769px){
+    .product-description{
+        display: inline;
+    }
+    .product-container{
+        grid-template-columns: 50% 50%;
+        grid-row: auto;
+    }
+
+    .product-image{
+        grid-column: 1;
+        grid-row: 1 / 8;
+    }
+    .product-info-name{
+        grid-column: 2;
+    }
+    .product-info-description{
+        grid-column: 2;
+    }
+    .product-info-price{
+        grid-column: 2;
+    }
+    .product-properties{
+        grid-column: 2;
+    }
+    .product-quantity{
+        grid-column: 2;
+    }
+    .add-to-cart{
+        grid-column: 2;
+    }
+
+    .buttons-administrator{
+        grid-column: 2;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items:center;
+    }
+    
+    .delete .button-container button{
+        margin-top: 0px;
+    }
+
+    .button-container button{
+        transition: all .2s;
+    }
+
+    .button-container button:hover{
+        background-color: #FFFFFF;
+        border: 1px solid #4b5666;
+        color: #4b5666;
+    }
+
+}
